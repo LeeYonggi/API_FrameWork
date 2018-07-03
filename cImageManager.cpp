@@ -38,11 +38,11 @@ void cImageManager::DrawImage(HDC hdc, HDC backdc, Texture * tex, Position pos, 
 
 	size = cutImage;
 
-	pos = { pos.x - (size.right - size.left) * 0.5f,  pos.y - (size.bottom - size.top) * 0.5f };
+	pos = { pos.x - (size.right) * 0.5f,  pos.y - (size.bottom) * 0.5f };
 
 	SelectObject(backdc, tex);
 
-	TransparentBlt(hdc, pos.x, pos.y, size.right - size.left, size.bottom - size.top, backdc,
+	TransparentBlt(hdc, pos.x, pos.y, size.right, size.bottom, backdc,
 		size.left, size.top, size.right, size.bottom, RGB(r, g, b));
 }
 

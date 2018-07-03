@@ -43,6 +43,7 @@ void MainProc::Render(HWND hWnd)
 	DeleteDC(_MemDC);
 
 	EndPaint(hWnd, &ps);
+	InvalidateRect(hWnd, NULL, FALSE);
 }
 
 void MainProc::ObjectRender(HDC memDc, HDC backDc)
