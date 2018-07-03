@@ -12,6 +12,7 @@ public:
 	void Init();
 	void Update(float deltaTime);
 	void Render(HWND hWnd);
+	void ObjectRender(HDC memDc, HDC backDc);
 	void Release();
 
 	void SetGameActive(bool active) { gameActive = active; }

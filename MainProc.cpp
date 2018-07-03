@@ -18,32 +18,37 @@ void MainProc::Update(float deltaTime)
 
 void MainProc::Render(HWND hWnd)
 {
-	HDC hdc, MemDC, BackDC;
+	HDC hdc, _MemDC, _BackDC;
 	HBITMAP hPreBit;
 	PAINTSTRUCT ps;
 
 	hdc = BeginPaint(hWnd, &ps);
 
-	MemDC = CreateCompatibleDC(hdc);
+	_MemDC = CreateCompatibleDC(hdc);
 
 	g_BackBitMap = CreateCompatibleBitmap(hdc, 800, 600);
 
-	hPreBit = (HBITMAP)SelectObject(MemDC, g_BackBitMap);
+	hPreBit = (HBITMAP)SelectObject(_MemDC, g_BackBitMap);
 
-	BackDC = CreateCompatibleDC(hdc);
+	_BackDC = CreateCompatibleDC(hdc);
 
-	backGround->Render(MemDC, BackDC);
-	stanley->Render(MemDC, BackDC);
+	ObjectRender(_MemDC, _BackDC);
 
-	DeleteObject(BackDC);
+	DeleteObject(_BackDC);
 
-	BitBlt(hdc, 0, 0, 800, 600, MemDC, 0, 0, SRCCOPY);
+	BitBlt(hdc, 0, 0, 800, 600, _MemDC, 0, 0, SRCCOPY);
 
-	SelectObject(MemDC, hPreBit);
+	SelectObject(_MemDC, hPreBit);
 	DeleteObject(g_BackBitMap);
-	DeleteDC(MemDC);
+	DeleteDC(_MemDC);
 
 	EndPaint(hWnd, &ps);
+}
+
+void MainProc::ObjectRender(HDC memDc, HDC backDc)
+{
+	backGround->Render(memDc, backDc);
+	stanley->Render(memDc, backDc);
 }
 
 void MainProc::Release()
