@@ -6,11 +6,14 @@ void MainProc::Init()
 {
 	backGround = new BackGround;
 	backGround->Init();
+	stanley = new Stanley;
+	stanley->Init();
 }
 
 void MainProc::Update(float deltaTime)
 {
 	backGround->Update(deltaTime);
+	stanley->Update(deltaTime);
 }
 
 void MainProc::Render(HWND hWnd)
@@ -30,6 +33,7 @@ void MainProc::Render(HWND hWnd)
 	BackDC = CreateCompatibleDC(hdc);
 
 	backGround->Render(MemDC, BackDC);
+	stanley->Render(MemDC, BackDC);
 
 	DeleteObject(BackDC);
 
@@ -50,4 +54,8 @@ void MainProc::Release()
 			delete iter.second;
 	}
 	m_TextureData.clear();
+	if (backGround)
+		delete backGround;
+	if (stanley)
+		delete stanley;
 }

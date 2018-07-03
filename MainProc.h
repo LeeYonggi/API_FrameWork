@@ -7,6 +7,7 @@ private:
 	bool gameActive;
 	HBITMAP g_BackBitMap;
 	BackGround *backGround;
+	Stanley *stanley;
 public:
 	void Init();
 	void Update(float deltaTime);

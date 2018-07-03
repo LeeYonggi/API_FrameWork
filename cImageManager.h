@@ -22,7 +22,8 @@ private:
 
 public:
 	bool AddImage(string str, LPCWSTR loute);
-	void DrawImage(HDC hdc, HDC backdc, Texture *tex, Position pos, int r, int g, int b, RECT cutImage, bool isCut);
+	void DrawImage(HDC hdc, HDC backdc, Texture *tex, Position pos, int r, int g, int b, RECT cutImage);
+	void DrawImage(HDC hdc, HDC backdc, Texture *tex, Position pos, int r, int g, int b);
 
 public:
 	bool GetAnimeActive() { return animeActive; }

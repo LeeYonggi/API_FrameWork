@@ -30,22 +30,36 @@ bool cImageManager::AddImage(string str, LPCWSTR loute)
 	return true;
 }
 
-void cImageManager::DrawImage(HDC hdc, HDC backdc, Texture * tex, Position pos, int r, int g, int b, RECT cutImage, bool isCut)
+void cImageManager::DrawImage(HDC hdc, HDC backdc, Texture * tex, Position pos, int r, int g, int b, RECT cutImage)
 {
 	SelectObject(backdc, tex->tex);
 
 	RECT size;
-	if (isCut)
-		size = cutImage;
-	else
-		size = { 0, 0, tex->info.bmWidth, tex->info.bmHeight };
+
+	size = cutImage;
+
+	pos = { pos.x - (size.right - size.left) * 0.5f,  pos.y - (size.bottom - size.top) * 0.5f };
+
+	SelectObject(backdc, tex);
+
+	TransparentBlt(hdc, pos.x, pos.y, size.right - size.left, size.bottom - size.top, backdc,
+		size.left, size.top, size.right, size.bottom, RGB(r, g, b));
+}
+
+void cImageManager::DrawImage(HDC hdc, HDC backdc, Texture * tex, Position pos, int r, int g, int b)
+{
+	SelectObject(backdc, tex->tex);
+
+	RECT size;
+	
+	size = { 0, 0, tex->info.bmWidth, tex->info.bmHeight };
 
 	pos = { pos.x - (size.right - size.left) * 0.5f,  pos.y - (size.bottom - size.top) * 0.5f };
 
 	SelectObject(backdc, tex);
 
 	TransparentBlt(hdc, pos.x, pos.y, tex->info.bmWidth, tex->info.bmHeight, backdc,
-		size.left, size.top, size.right, size.bottom, RGB(r, b, g));
+		size.left, size.top, size.right, size.bottom, RGB(r, g, b));
 }
 
 cImageManager::cImageManager()
