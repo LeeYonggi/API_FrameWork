@@ -17,14 +17,12 @@ protected:
 	Texture *texture;
 
 private:
-	vector<RECT> v_AnimeRect;
 	bool animeActive;
 	int nowImage;
 
 public:
 	bool AddImage(string str, LPCWSTR loute);
-	void PushAnimeRect(RECT rect);
-	void DrawImage(HDC hdc, HDC backdc, Texture *tex, Position pos, int r, int g, int b, bool cutImage);
+	void DrawImage(HDC hdc, HDC backdc, Texture *tex, Position pos, int r, int g, int b, RECT cutImage, bool isCut);
 
 public:
 	bool GetAnimeActive() { return animeActive; }

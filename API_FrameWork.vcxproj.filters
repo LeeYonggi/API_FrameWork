@@ -23,7 +23,7 @@
     <Filter Include="Object\BackGround">
       <UniqueIdentifier>{76193434-2024-4b6b-994b-e5688d7cdf46}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Object\stanley">
+    <Filter Include="Object\Stanley">
       <UniqueIdentifier>{46d96326-a5e0-446b-8e76-1b757d97cb28}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
@@ -52,7 +52,12 @@
     <ClInclude Include="cImageManager.h">
       <Filter>ImageManager</Filter>
     </ClInclude>
-    <ClInclude Include="BackGround.h" />
+    <ClInclude Include="BackGround.h">
+      <Filter>Object\BackGround</Filter>
+    </ClInclude>
+    <ClInclude Include="Stanley.h">
+      <Filter>Object\Stanley</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="WinMain.cpp">
@@ -73,7 +78,12 @@
     <ClCompile Include="cImageManager.cpp">
       <Filter>ImageManager</Filter>
     </ClCompile>
-    <ClCompile Include="BackGround.cpp" />
+    <ClCompile Include="BackGround.cpp">
+      <Filter>Object\BackGround</Filter>
+    </ClCompile>
+    <ClCompile Include="Stanley.cpp">
+      <Filter>Object\Stanley</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="API_FrameWork.rc">

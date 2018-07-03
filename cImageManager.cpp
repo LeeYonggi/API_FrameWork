@@ -30,19 +30,13 @@ bool cImageManager::AddImage(string str, LPCWSTR loute)
 	return true;
 }
 
-void cImageManager::PushAnimeRect(RECT rect)
-{
-	v_AnimeRect.push_back(rect);
-	nowImage++;
-}
-
-void cImageManager::DrawImage(HDC hdc, HDC backdc, Texture * tex, Position pos, int r, int g, int b, bool cutImage)
+void cImageManager::DrawImage(HDC hdc, HDC backdc, Texture * tex, Position pos, int r, int g, int b, RECT cutImage, bool isCut)
 {
 	SelectObject(backdc, tex->tex);
 
 	RECT size;
-	if (cutImage)
-		size = v_AnimeRect[nowImage];
+	if (isCut)
+		size = cutImage;
 	else
 		size = { 0, 0, tex->info.bmWidth, tex->info.bmHeight };
 

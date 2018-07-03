@@ -10,6 +10,7 @@ class Object :
 {
 protected:
 	Position position;
+	vector<RECT> v_AnimeRect;
 
 public:
 	virtual void Init() = 0;
